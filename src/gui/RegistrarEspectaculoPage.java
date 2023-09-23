@@ -190,7 +190,7 @@ public class RegistrarEspectaculoPage implements ActionListener {
             long codEspectaculo = random.nextLong((long) Math.pow(10, codigoMax));
 
 
-            Espectaculo espectaculo1 = new Espectaculo(codEspectaculo, nombreEspectaculo, cantEntradas, fechaEspectaculo, codEstadio,precioEspectaulo,mailVendedor);
+            Espectaculo espectaculo1 = new Espectaculo(codEspectaculo,nombreEspectaculo,cantEntradas,fechaEspectaculo,codEstadio,estadioSeleccionado,precioEspectaulo,mailVendedor);
             espectaculo1.guardarEspectaculo(espectaculo1,capacidadMaxina);
 
 

@@ -140,6 +140,7 @@ public class HomePage implements ActionListener {
 
     private void cargarEspectaculoVendedor(Vendedor vendedor) throws ServiceException {
         espectaculos = espectaculoService.buscarTodosEspectaculosPorVendedor(vendedor.getMailUsuario());
+        vendedor.setEspectaculos(espectaculos);
     }
 
     private void cargarEntradas() throws ServiceException {
@@ -541,6 +542,7 @@ public class HomePage implements ActionListener {
         else if(!es_vendedor && !es_admin){
             cargarEspectaculos2();
             cargarEntradas();
+            System.out.println(comprador1.toString2());
             frame.add(panelComprador);
             frame.add(panelSeleccionComprador);
             panelComprador.setVisible(true);
@@ -642,6 +644,7 @@ public class HomePage implements ActionListener {
 
         else if(!es_admin && es_vendedor){
             cargarEspectaculoVendedor(vendedor1);
+            System.out.println(vendedor1.toString2());
             frame.add(panelVendedor);
             frame.add(panelEntradasVendidas);
             panelVendedor.setVisible(true);
@@ -825,6 +828,7 @@ public class HomePage implements ActionListener {
 
         if(e.getSource()==espectaculoComboBox){
             espectaculo = (Espectaculo) espectaculoComboBox.getSelectedItem();
+            System.out.printf(espectaculo.toString2());
             try {
                 estadio = estadioService.buscar(espectaculo.getCodEstadio());
             } catch (ServiceException ex) {

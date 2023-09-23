@@ -124,13 +124,28 @@ public class Comprador extends Usuario{
         this.esVendedor = esVendedor;
     }
 
+
+    public String toString2() {
+        return "Comprador{" +
+                "EspectaculoAsignado=" + EspectaculoAsignado +
+                ", entradas=" + entradas +
+                ", esAdmin=" + esAdmin +
+                ", esVendedor=" + esVendedor +
+                '}';
+    }
+
     @Override
     public String getContraseña() {
         return super.getContraseña();
     }
 
+
+
     @Override
     public String toString() {
         return super.toString();
     }
+
+
+
 }

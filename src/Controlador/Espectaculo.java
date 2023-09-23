@@ -11,41 +11,43 @@ public class Espectaculo {
     private long codEspectaculo;
     private String nombreEspectaculo;
     private long codEstadio;
+    private Estadio estadio;
     private Entrada entrada;
     private int cantEntradas;
     private String fechaEvento;
     private String mailVendedor;
-
     private int precioEspectaculo;
 
-    public Espectaculo(long codEspectaculo, String nombreEvento, Long codEstadio, Entrada entrada, int cantEntradas, String fechaEvento) {
-        this.codEspectaculo = codEspectaculo;
-        this.nombreEspectaculo = nombreEvento;
-        this.codEstadio = codEstadio;
-        this.entrada = entrada;
-        this.cantEntradas = cantEntradas;
-        this.fechaEvento = fechaEvento;
-    }
 
-    public Espectaculo(long codEspectaculo,String nombreEspectaculo, int cantEntradas, String fechaEvento, long codEstadio,int precioEspectaculo, String mailVendedor){
+    public Espectaculo(long codEspectaculo,String nombreEspectaculo, int cantEntradas,
+                       String fechaEvento, long codEstadio, Estadio estadio, int precioEspectaculo, String mailVendedor){
         this.codEspectaculo = codEspectaculo;
         this.nombreEspectaculo = nombreEspectaculo;
         this.cantEntradas = cantEntradas;
         this.fechaEvento = fechaEvento;
         this.codEstadio = codEstadio;
+        this.estadio = estadio;
         this.precioEspectaculo=precioEspectaculo;
         this.mailVendedor = mailVendedor;
 
     }
+    public Espectaculo(long codEspectaculo, String nombreEvento, Long codEstadio, Estadio estadio,
+                       Entrada entrada, int cantEntradas, String fechaEvento) {
+        this.codEspectaculo = codEspectaculo;
+        this.nombreEspectaculo = nombreEvento;
+        this.codEstadio = codEstadio;
+        this.estadio = estadio;
+        this.entrada = entrada;
+        this.cantEntradas = cantEntradas;
+        this.fechaEvento = fechaEvento;
+    }
+
+
 
     public Espectaculo() {
     }
 
     public void asignarEstadio(Estadio estadio){
-
-    }
-
-    public void definirCantEntradas(Entrada entrada){
 
     }
 
@@ -151,6 +153,22 @@ public class Espectaculo {
     }
 
     public String toString(){return nombreEspectaculo + " | " + fechaEvento;}
+
+
+
+    public String toString2() {
+        return "Espectaculo{" +
+                "codEspectaculo=" + codEspectaculo +
+                ", nombreEspectaculo='" + nombreEspectaculo + '\'' +
+                ", codEstadio=" + codEstadio +
+                ", estadio=" + estadio +
+                ", entrada=" + entrada +
+                ", cantEntradas=" + cantEntradas +
+                ", fechaEvento='" + fechaEvento + '\'' +
+                ", mailVendedor='" + mailVendedor + '\'' +
+                ", precioEspectaculo=" + precioEspectaculo +
+                '}';
+    }
 
     public String getMailVendedor() {
         return mailVendedor;

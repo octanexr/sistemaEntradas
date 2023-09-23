@@ -12,10 +12,12 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Vendedor extends Usuario {
-   private int cantEntradasVendidas;
-   private Entrada entrada;
+    private int cantEntradasVendidas;
+    private Entrada entrada;
     private boolean esAdmin;
     private boolean esVendedor;
+    private ArrayList<Espectaculo> espectaculos = new ArrayList<>();
+
 
     public Vendedor(String nombreUsuario, String mailUsuario, String contraseña, boolean esAdmin, boolean esVendedor ) {
         super(nombreUsuario, mailUsuario, contraseña);
@@ -128,5 +130,20 @@ public class Vendedor extends Usuario {
 
     public void setEsVendedor(boolean esVendedor) {
         this.esVendedor = esVendedor;
+    }
+
+    public void setEspectaculos(ArrayList<Espectaculo> espectaculos) {
+        this.espectaculos = espectaculos;
+    }
+
+
+    public String toString2() {
+        return "Vendedor{" +
+                "cantEntradasVendidas=" + cantEntradasVendidas +
+                ", entrada=" + entrada +
+                ", esAdmin=" + esAdmin +
+                ", esVendedor=" + esVendedor +
+                ", espectaculos=" + espectaculos +
+                '}';
     }
 }
