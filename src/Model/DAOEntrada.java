@@ -1,6 +1,8 @@
 package Model;
 
+import Controlador.Comprador;
 import Controlador.Entrada;
+import Controlador.Espectaculo;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 public class DAOEntrada implements DAO<Entrada> {
 
     private String DB_JDBC_DRIVER="org.h2.Driver";
-    private String DB_URL="jdbc:h2:G:/sistemaEntradas/base/baseEntradas";
+    private String DB_URL="jdbc:h2:C:/Users/octir/OneDrive/Escritorio/Sistema de enradas/base/baseEntradas";
     private String DB_USER="sa";
     private String DB_PASSWORD="";
 

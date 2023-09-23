@@ -7,10 +7,11 @@ import service.ServiceException;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Comprador extends Usuario{
     private Espectaculo EspectaculoAsignado;
-    private Entrada tipoEntrada;
+    private ArrayList<Entrada> entradas = new ArrayList<>();
     private boolean esAdmin;
     private boolean esVendedor;
 
@@ -19,8 +20,10 @@ public class Comprador extends Usuario{
         super(nombreUsuario, mailUsuario, contraseña);
     }
 
-    public Comprador(String nombreUsuario, String mailUsuario, String contraseña, boolean esAdmin, boolean esVendedor) {
+    public Comprador(String nombreUsuario, String mailUsuario, String contraseña, Espectaculo espectaculoAsignado, ArrayList<Entrada> entradas, boolean esAdmin, boolean esVendedor) {
         super(nombreUsuario, mailUsuario, contraseña);
+        EspectaculoAsignado = espectaculoAsignado;
+        this.entradas = entradas;
         this.esAdmin = esAdmin;
         this.esVendedor = esVendedor;
     }
@@ -95,16 +98,14 @@ public class Comprador extends Usuario{
         EspectaculoAsignado = espectaculoAsignado;
     }
 
-    public void setTipoEntrada(Entrada tipoEntrada) {
-        this.tipoEntrada = tipoEntrada;
-    }
+
 
     public Espectaculo getEspectaculoAsignado() {
         return EspectaculoAsignado;
     }
 
-    public Entrada getTipoEntrada() {
-        return tipoEntrada;
+    public void setEntradas(ArrayList<Entrada> entradas) {
+        this.entradas = entradas;
     }
 
     public boolean isEsAdmin() {

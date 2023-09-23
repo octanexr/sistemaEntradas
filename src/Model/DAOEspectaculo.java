@@ -1,5 +1,6 @@
 package Model;
 
+import Controlador.Comprador;
 import Controlador.Espectaculo;
 import Controlador.Estadio;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 public class DAOEspectaculo implements DAO<Espectaculo> {
 
     private String DB_JDBC_DRIVER="org.h2.Driver";
-    private String DB_URL="jdbc:h2:G:/sistemaEntradas/base/baseEntradas";
+    private String DB_URL="jdbc:h2:C:/Users/octir/OneDrive/Escritorio/Sistema de enradas/base/baseEntradas";
     private String DB_USER="sa";
     private String DB_PASSWORD="";
     @Override

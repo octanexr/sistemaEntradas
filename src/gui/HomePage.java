@@ -144,6 +144,7 @@ public class HomePage implements ActionListener {
 
     private void cargarEntradas() throws ServiceException {
         entradas = entradaService.buscarTodosUsuarioEntrada(comprador1.getMailUsuario());
+        comprador1.setEntradas(entradas);
     }
 
     private void cargarEstadios() throws ServiceException{
