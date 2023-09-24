@@ -50,6 +50,15 @@ public class Entrada {
 
     }
 
+    public ArrayList<Entrada> cargarEntradas(EntradaService entradaService, Comprador comprador1) throws ServiceException {
+        ArrayList<Entrada> entradas = new ArrayList<>();
+
+        entradas = entradaService.buscarTodosUsuarioEntrada(comprador1.getMailUsuario());
+        comprador1.setEntradas(entradas);
+
+        return entradas;
+    }
+
 
     public long getCodEntrada() {
         return codEntrada;

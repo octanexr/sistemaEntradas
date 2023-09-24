@@ -2,13 +2,9 @@ package Controlador;
 
 import gui.HomePage;
 import gui.LoginPage;
-import service.CompradorService;
-import service.ServiceException;
-import service.VendedorService;
-import service.VentaService;
+import service.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Vendedor extends Usuario {
@@ -99,6 +95,45 @@ public class Vendedor extends Usuario {
         }
 
     }
+
+
+    public JComboBox<Venta> cargarVentas(Vendedor vendedor, JComboBox<Venta> entradasVendidasComboBox){
+        try {
+            EntradaService entradaService = new EntradaService();
+            CompradorService compradorService = new CompradorService();
+
+            ArrayList<Venta> ventas = vendedor.verVentas(vendedor);
+
+            for(Venta venta:ventas){
+                venta.setVendedor(vendedor);
+                venta.setComprador(compradorService.buscar2Comprador(venta.getMailComprador()));
+                venta.setEntrada(entradaService.buscarEntrada(venta.getCodEntrada()));
+                System.out.println(venta.toString2());
+                entradasVendidasComboBox.addItem(venta);
+            }
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+
+        return entradasVendidasComboBox;
+
+    }
+
+    public ArrayList<Espectaculo> cargarEspectaculoVendedor(Vendedor vendedor, EspectaculoService espectaculoService, EstadioService estadioService) throws ServiceException {
+
+        ArrayList<Espectaculo> espectaculosV = new ArrayList<>();
+        espectaculosV = espectaculoService.buscarTodosEspectaculosPorVendedor(vendedor.getMailUsuario());
+
+        for(Espectaculo espectaculo: espectaculos){
+            espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
+            System.out.println(espectaculo.toString2());
+        }
+
+        vendedor.setEspectaculos(espectaculos);
+
+        return espectaculosV;
+    }
+
 
 
     public Entrada verCantidadEntradas(){

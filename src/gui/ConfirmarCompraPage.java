@@ -233,7 +233,25 @@ public class ConfirmarCompraPage implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==botonConfirmar){
             mailVendedor = espectaculo1.getMailVendedor();
+            Vendedor vendedor = new Vendedor();
+            VendedorService vendedorService = new VendedorService();
+
+            try {
+                vendedor = vendedorService.buscar2Vendedor(mailVendedor);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+
             mailComprador = entrada1.getMailUsuario();
+            Comprador comprador = new Comprador();
+            CompradorService compradorService = new CompradorService();
+
+            try {
+                comprador = compradorService.buscar2Comprador(mailComprador);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
+
             codEntrada = entrada1.getCodEntrada();
             fechaVenta = ingresarFechaField.getText();
             valorVenta = entrada1.getPrecioEntrada();
@@ -270,7 +288,7 @@ public class ConfirmarCompraPage implements ActionListener {
             int codMax = 5;
             long codVenta = random.nextLong((long) Math.pow(10, codMax));
 
-            venta = new Venta(codVenta,mailVendedor,mailComprador,codEntrada,fechaVenta,valorVenta,metodoPagoSeleccionado,nombreEnTarjeta,numeroTarjeta,fechaVencimiento,cvv,localidad,direccionFacturacion,codigoPostal);
+            venta = new Venta(codVenta,mailVendedor,vendedor,mailComprador,comprador,codEntrada, entrada1,fechaVenta,valorVenta,metodoPagoSeleccionado,nombreEnTarjeta,numeroTarjeta,fechaVencimiento,cvv,localidad,direccionFacturacion,codigoPostal);
 
             precioTotalLabel.setText("Precio total a pagar: $" + precioTotal1);
             metodoDePagoSeleccionadolabel.setText("Metodo de pago seleccionado: " + metodoPagoSeleccionado);

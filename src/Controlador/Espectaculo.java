@@ -6,7 +6,6 @@ import service.ServiceException;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Espectaculo {
     private long codEspectaculo;
@@ -107,6 +106,36 @@ public class Espectaculo {
 
     }
 
+    public JComboBox<Espectaculo> cargarEspectaculos(EspectaculoService espectaculoService, JComboBox<Espectaculo> espectaculoComboBox){
+        try {
+            ArrayList<Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
+            for(Espectaculo espectaculo:espectaculos){
+
+                espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
+
+                espectaculoComboBox.addItem(espectaculo);
+            }
+        } catch (ServiceException e) {
+            throw new RuntimeException(e);
+        }
+
+        return espectaculoComboBox;
+
+    }
+
+    public ArrayList<Espectaculo> cargarEspectaculos2(EspectaculoService espectaculoService) throws ServiceException {
+        ArrayList<Espectaculo> espectaculos = new ArrayList<>();
+        espectaculos = espectaculoService.buscarTodosEspectaculo();
+
+        for(Espectaculo espectaculo: espectaculos){
+            espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
+            System.out.println(espectaculo.toString2());
+        }
+
+        return espectaculos;
+    }
+
+
 
     public int getCantEntradas() {
         return cantEntradas;
@@ -175,6 +204,7 @@ public class Espectaculo {
                 ", precioEspectaculo=" + precioEspectaculo +
                 '}';
     }
+
 
     public String getMailVendedor() {
         return mailVendedor;

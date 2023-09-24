@@ -27,7 +27,7 @@ public class DAOEstadio implements DAO<Estadio>{
             preparedStatement.setInt(7,elemento.getPrecioPlatea());
             preparedStatement.setInt(8,elemento.getPrecioCampo());
             preparedStatement.setInt(9,elemento.getPrecioVip());
-            preparedStatement.setBytes(10,elemento.getBytes());
+            preparedStatement.setBytes(10,elemento.getBytesImagen());
             int res=preparedStatement.executeUpdate();
             System.out.println("Se agregaron " + res);
         }
@@ -68,7 +68,7 @@ public class DAOEstadio implements DAO<Estadio>{
                 estadio.setPrecioPlatea(resultSet.getInt("PRECIOPLATEA"));
                 estadio.setPrecioCampo(resultSet.getInt("PRECIOCAMPO"));
                 estadio.setPrecioVip(resultSet.getInt("PRECIOVIP"));
-                estadio.setBytes(resultSet.getBytes("IMAGENESTADIO"));
+                estadio.setBytesImagen(resultSet.getBytes("IMAGENESTADIO"));
                 estadio.setCodEstadio(id);
             }
         }
@@ -131,12 +131,16 @@ public class DAOEstadio implements DAO<Estadio>{
             while (resultSet.next()) {
 
                 estadio = new Estadio();
+                estadio.setCodEstadio(resultSet.getLong("CODESTADIO"));
                 estadio.setNombreEstadio(resultSet.getString("NOMBREESTADIO"));
                 estadio.setCapacidadMaxima(resultSet.getInt("CAPACIDADMAXIMA"));
                 estadio.setCantPlatea(resultSet.getInt("CANTPLATEA"));
                 estadio.setCantCampo(resultSet.getInt("CANTCAMPO"));
                 estadio.setCantVip(resultSet.getInt("CANTVIP"));
-                estadio.setCodEstadio(resultSet.getLong("CODESTADIO"));
+                estadio.setPrecioPlatea(resultSet.getInt("PRECIOPLATEA"));
+                estadio.setPrecioCampo(resultSet.getInt("PRECIOCAMPO"));
+                estadio.setPrecioVip(resultSet.getInt("PRECIOVIP"));
+                estadio.setBytesImagen(resultSet.getBytes("IMAGENESTADIO"));
                 datos.add(estadio);
             }
         }

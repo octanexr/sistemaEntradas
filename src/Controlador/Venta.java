@@ -14,8 +14,11 @@ import java.time.LocalDate;
 public class Venta {
     private long codventa;
     private String mailVendedor;
+    private Vendedor vendedor;
     private String mailComprador;
+    private Comprador comprador;
     private long codEntrada;
+    private Entrada entrada;
     private String fechaVenta;
     private int valorVenta;
     private String tipoTarjeta;
@@ -33,6 +36,26 @@ public class Venta {
         this.mailVendedor = mailVendedor;
         this.mailComprador = mailComprador;
         this.codEntrada = codEntrada;
+        this.fechaVenta = fechaVenta;
+        this.valorVenta = valorVenta;
+        this.tipoTarjeta = tipoTarjeta;
+        this.nombreEnTarjeta = nombreEnTarjeta;
+        this.numeroTarjeta = numeroTarjeta;
+        this.fechaVencimiento = fechaVencimiento;
+        this.cvv = cvv;
+        this.localidad = localidad;
+        this.direccionFacturacion = direccionFacturacion;
+        this.codigoPostal = codigoPostal;
+    }
+
+    public Venta(long codventa, String mailVendedor, Vendedor vendedor, String mailComprador, Comprador comprador, long codEntrada, Entrada entrada, String fechaVenta, int valorVenta, String tipoTarjeta, String nombreEnTarjeta, int numeroTarjeta, String fechaVencimiento, int cvv, String localidad, String direccionFacturacion, String codigoPostal) {
+        this.codventa = codventa;
+        this.mailVendedor = mailVendedor;
+        this.vendedor = vendedor;
+        this.mailComprador = mailComprador;
+        this.comprador = comprador;
+        this.codEntrada = codEntrada;
+        this.entrada = entrada;
         this.fechaVenta = fechaVenta;
         this.valorVenta = valorVenta;
         this.tipoTarjeta = tipoTarjeta;
@@ -84,6 +107,18 @@ public class Venta {
         espectaculo.setCantEntradas(espectaculo.getCantEntradas()+1);
 
 
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public void setComprador(Comprador comprador) {
+        this.comprador = comprador;
+    }
+
+    public void setEntrada(Entrada entrada) {
+        this.entrada = entrada;
     }
 
     public long getCodventa() {
@@ -196,6 +231,29 @@ public class Venta {
 
     public void setCodigoPostal(String codigoPostal) {
         this.codigoPostal = codigoPostal;
+    }
+
+
+    public String toString2() {
+        return "Venta{" +
+                "codventa=" + codventa +
+                ", mailVendedor='" + mailVendedor + '\'' +
+                ", vendedor=" + vendedor +
+                ", mailComprador='" + mailComprador + '\'' +
+                ", comprador=" + comprador +
+                ", codEntrada=" + codEntrada +
+                ", entrada=" + entrada +
+                ", fechaVenta='" + fechaVenta + '\'' +
+                ", valorVenta=" + valorVenta +
+                ", tipoTarjeta='" + tipoTarjeta + '\'' +
+                ", nombreEnTarjeta='" + nombreEnTarjeta + '\'' +
+                ", numeroTarjeta=" + numeroTarjeta +
+                ", fechaVencimiento='" + fechaVencimiento + '\'' +
+                ", cvv=" + cvv +
+                ", localidad='" + localidad + '\'' +
+                ", direccionFacturacion='" + direccionFacturacion + '\'' +
+                ", codigoPostal='" + codigoPostal + '\'' +
+                '}';
     }
 
     @Override

@@ -4,8 +4,8 @@ import service.EstadioService;
 import service.ServiceException;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Estadio {
     private long codEstadio;
@@ -17,7 +17,7 @@ public class Estadio {
     private int precioPlatea;
     private int precioCampo;
     private int precioVip;
-    private byte[] bytes;
+    private byte[] bytesImagen;
 
     public Estadio(long codEstadio, String nombreEstadio, int capacidadMaxima, int cantPlatea, int cantCampo, int cantVip,int precioPlatea,int precioCampo,int precioVip,byte[] bytes) {
         this.codEstadio = codEstadio;
@@ -29,7 +29,7 @@ public class Estadio {
         this.precioPlatea = precioPlatea;
         this.precioCampo = precioCampo;
         this.precioVip = precioVip;
-        this.bytes = bytes;
+        this.bytesImagen = bytes;
     }
 
     public Estadio(){
@@ -66,6 +66,33 @@ public class Estadio {
 
     }
 
+    public ArrayList<Estadio> cargarEstadios(EstadioService estadioService) throws ServiceException{
+        ArrayList<Estadio> estadios = new ArrayList<>();
+
+        estadios = estadioService.buscarTodosEstadio();
+
+        for(Estadio estadio:estadios){
+            estadio.setBytesImagen(buscarImagenEstadio(estadio));
+            System.out.println(estadio.toString2());
+        }
+
+
+
+        return estadios;
+    }
+
+    public JComboBox<Estadio> cargarEstadios2(EstadioService estadioService, JComboBox<Estadio> estadiosComboBox) throws ServiceException{
+        try{
+            ArrayList<Estadio> estadios = estadioService.buscarTodosEstadio();
+            for(Estadio a:estadios){
+                estadiosComboBox.addItem(a);
+            }
+        }catch (ServiceException e){
+            throw new RuntimeException(e);
+        }
+
+        return estadiosComboBox;
+    }
 
     public long getCodEstadio() {
         return codEstadio;
@@ -87,6 +114,10 @@ public class Estadio {
         return cantCampo;
     }
 
+    public int getCantVip() {
+        return cantVip;
+    }
+
     public int getPrecioPlatea() {
         return precioPlatea;
     }
@@ -99,8 +130,12 @@ public class Estadio {
         return precioVip;
     }
 
-    public int getCantVip() {
-        return cantVip;
+    public byte[] getBytesImagen() {
+        return bytesImagen;
+    }
+
+    public String toString(){
+        return nombreEstadio;
     }
 
     public void setCodEstadio(long codEstadio) {
@@ -139,15 +174,25 @@ public class Estadio {
         this.precioVip = precioVip;
     }
 
-    public String toString(){
-        return nombreEstadio;
+    public void setBytesImagen(byte[] bytesImagen) {
+        this.bytesImagen = bytesImagen;
     }
 
-    public byte[] getBytes() {
-        return bytes;
+
+    public String toString2() {
+        return "Estadio{" +
+                "codEstadio=" + codEstadio +
+                ", nombreEstadio='" + nombreEstadio + '\'' +
+                ", capacidadMaxima=" + capacidadMaxima +
+                ", cantPlatea=" + cantPlatea +
+                ", cantCampo=" + cantCampo +
+                ", cantVip=" + cantVip +
+                ", precioPlatea=" + precioPlatea +
+                ", precioCampo=" + precioCampo +
+                ", precioVip=" + precioVip +
+                ", bytesImagen=" + //Arrays.toString(bytesImagen) +
+                '}';
     }
 
-    public void setBytes(byte[] bytes) {
-        this.bytes = bytes;
-    }
+
 }

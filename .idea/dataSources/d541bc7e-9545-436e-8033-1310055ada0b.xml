@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="baseEntradas">
+  <database-model serializer="dbm" dbms="H2" family-id="H2" format-version="4.48">
+    <root id="1">
+      <ServerVersion>2.1.210</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="BASEENTRADAS">
+      <Current>1</Current>
+    </database>
+    <collation id="3" parent="2" name="ALBANIAN"/>
+    <collation id="4" parent="2" name="ALBANIAN_ALBANIA"/>
+    <collation id="5" parent="2" name="ARABIC"/>
+    <collation id="6" parent="2" name="ARABIC_ALGERIA"/>
+    <collation id="7" parent="2" name="ARABIC_BAHRAIN"/>
+    <collation id="8" parent="2" name="ARABIC_EGYPT"/>
+    <collation id="9" parent="2" name="ARABIC_IRAQ"/>
+    <collation id="10" parent="2" name="ARABIC_JORDAN"/>
+    <collation id="11" parent="2" name="ARABIC_KUWAIT"/>
+    <collation id="12" parent="2" name="ARABIC_LEBANON"/>
+    <collation id="13" parent="2" name="ARABIC_LIBYA"/>
+    <collation id="14" parent="2" name="ARABIC_MOROCCO"/>
+    <collation id="15" parent="2" name="ARABIC_OMAN"/>
+    <collation id="16" parent="2" name="ARABIC_QATAR"/>
+    <collation id="17" parent="2" name="ARABIC_SAUDI_ARABIA"/>
+    <collation id="18" parent="2" name="ARABIC_SUDAN"/>
+    <collation id="19" parent="2" name="ARABIC_SYRIA"/>
+    <collation id="20" parent="2" name="ARABIC_TUNISIA"/>
+    <collation id="21" parent="2" name="ARABIC_UNITED_ARAB_EMIRATES"/>
+    <collation id="22" parent="2" name="ARABIC_YEMEN"/>
+    <collation id="23" parent="2" name="BELARUSIAN"/>
+    <collation id="24" parent="2" name="BELARUSIAN_BELARUS"/>
+    <collation id="25" parent="2" name="BULGARIAN"/>
+    <collation id="26" parent="2" name="BULGARIAN_BULGARIA"/>
+    <collation id="27" parent="2" name="CATALAN"/>
+    <collation id="28" parent="2" name="CATALAN_SPAIN"/>
+    <collation id="29" parent="2" name="CHINESE"/>
+    <collation id="30" parent="2" name="CHINESE_CHINA"/>
+    <collation id="31" parent="2" name="CHINESE_HONG_KONG_SAR_CHINA"/>
+    <collation id="32" parent="2" name="CHINESE_SINGAPORE"/>
+    <collation id="33" parent="2" name="CHINESE_TAIWAN"/>
+    <collation id="34" parent="2" name="CROATIAN"/>
+    <collation id="35" parent="2" name="CROATIAN_CROATIA"/>
+    <collation id="36" parent="2" name="CZECH"/>
+    <collation id="37" parent="2" name="CZECH_CZECHIA"/>
+    <collation id="38" parent="2" name="DANISH"/>
+    <collation id="39" parent="2" name="DANISH_DENMARK"/>
+    <collation id="40" parent="2" name="DUTCH"/>
+    <collation id="41" parent="2" name="DUTCH_BELGIUM"/>
+    <collation id="42" parent="2" name="DUTCH_NETHERLANDS"/>
+    <collation id="43" parent="2" name="ENGLISH"/>
+    <collation id="44" parent="2" name="ENGLISH_AUSTRALIA"/>
+    <collation id="45" parent="2" name="ENGLISH_CANADA"/>
+    <collation id="46" parent="2" name="ENGLISH_INDIA"/>
+    <collation id="47" parent="2" name="ENGLISH_IRELAND"/>
+    <collation id="48" parent="2" name="ENGLISH_MALTA"/>
+    <collation id="49" parent="2" name="ENGLISH_NEW_ZEALAND"/>
+    <collation id="50" parent="2" name="ENGLISH_PHILIPPINES"/>
+    <collation id="51" parent="2" name="ENGLISH_SINGAPORE"/>
+    <collation id="52" parent="2" name="ENGLISH_SOUTH_AFRICA"/>
+    <collation id="53" parent="2" name="ENGLISH_UNITED_KINGDOM"/>
+    <collation id="54" parent="2" name="ENGLISH_UNITED_STATES"/>
+    <collation id="55" parent="2" name="ESTONIAN"/>
+    <collation id="56" parent="2" name="ESTONIAN_ESTONIA"/>
+    <collation id="57" parent="2" name="FINNISH"/>
+    <collation id="58" parent="2" name="FINNISH_FINLAND"/>
+    <collation id="59" parent="2" name="FRENCH"/>
+    <collation id="60" parent="2" name="FRENCH_BELGIUM"/>
+    <collation id="61" parent="2" name="FRENCH_CANADA"/>
+    <collation id="62" parent="2" name="FRENCH_FRANCE"/>
+    <collation id="63" parent="2" name="FRENCH_LUXEMBOURG"/>
+    <collation id="64" parent="2" name="FRENCH_SWITZERLAND"/>
+    <collation id="65" parent="2" name="GERMAN"/>
+    <collation id="66" parent="2" name="GERMAN_AUSTRIA"/>
+    <collation id="67" parent="2" name="GERMAN_GERMANY"/>
+    <collation id="68" parent="2" name="GERMAN_LUXEMBOURG"/>
+    <collation id="69" parent="2" name="GERMAN_SWITZERLAND"/>
+    <collation id="70" parent="2" name="GREEK"/>
+    <collation id="71" parent="2" name="GREEK_CYPRUS"/>
+    <collation id="72" parent="2" name="GREEK_GREECE"/>
+    <collation id="73" parent="2" name="HEBREW"/>
+    <collation id="74" parent="2" name="HEBREW_ISRAEL"/>
+    <collation id="75" parent="2" name="HINDI"/>
+    <collation id="76" parent="2" name="HINDI_INDIA"/>
+    <collation id="77" parent="2" name="HUNGARIAN"/>
+    <collation id="78" parent="2" name="HUNGARIAN_HUNGARY"/>
+    <collation id="79" parent="2" name="ICELANDIC"/>
+    <collation id="80" parent="2" name="ICELANDIC_ICELAND"/>
+    <collation id="81" parent="2" name="INDONESIAN"/>
+    <collation id="82" parent="2" name="INDONESIAN_INDONESIA"/>
+    <collation id="83" parent="2" name="IRISH"/>
+    <collation id="84" parent="2" name="IRISH_IRELAND"/>
+    <collation id="85" parent="2" name="ITALIAN"/>
+    <collation id="86" parent="2" name="ITALIAN_ITALY"/>
+    <collation id="87" parent="2" name="ITALIAN_SWITZERLAND"/>
+    <collation id="88" parent="2" name="JAPANESE"/>
+    <collation id="89" parent="2" name="JAPANESE_JAPAN"/>
+    <collation id="90" parent="2" name="JAPANESE_JAPAN_JP"/>
+    <collation id="91" parent="2" name="KOREAN"/>
+    <collation id="92" parent="2" name="KOREAN_SOUTH_KOREA"/>
+    <collation id="93" parent="2" name="LATVIAN"/>
+    <collation id="94" parent="2" name="LATVIAN_LATVIA"/>
+    <collation id="95" parent="2" name="LITHUANIAN"/>
+    <collation id="96" parent="2" name="LITHUANIAN_LITHUANIA"/>
+    <collation id="97" parent="2" name="MACEDONIAN"/>
+    <collation id="98" parent="2" name="MACEDONIAN_NORTH_MACEDONIA"/>
+    <collation id="99" parent="2" name="MALAY"/>
+    <collation id="100" parent="2" name="MALAY_MALAYSIA"/>
+    <collation id="101" parent="2" name="MALTESE"/>
+    <collation id="102" parent="2" name="MALTESE_MALTA"/>
+    <collation id="103" parent="2" name="NORWEGIAN"/>
+    <collation id="104" parent="2" name="NORWEGIAN_BOKMÅL"/>
+    <collation id="105" parent="2" name="NORWEGIAN_BOKMÅL_NORWAY"/>
+    <collation id="106" parent="2" name="NORWEGIAN_NORWAY"/>
+    <collation id="107" parent="2" name="NORWEGIAN_NORWAY_NY"/>
+    <collation id="108" parent="2" name="NORWEGIAN_NYNORSK_NORWAY"/>
+    <collation id="109" parent="2" name="OFF"/>
+    <collation id="110" parent="2" name="POLISH"/>
+    <collation id="111" parent="2" name="POLISH_POLAND"/>
+    <collation id="112" parent="2" name="PORTUGUESE"/>
+    <collation id="113" parent="2" name="PORTUGUESE_BRAZIL"/>
+    <collation id="114" parent="2" name="PORTUGUESE_PORTUGAL"/>
+    <collation id="115" parent="2" name="ROMANIAN"/>
+    <collation id="116" parent="2" name="ROMANIAN_ROMANIA"/>
+    <collation id="117" parent="2" name="RUSSIAN"/>
+    <collation id="118" parent="2" name="RUSSIAN_RUSSIA"/>
+    <collation id="119" parent="2" name="SERBIAN"/>
+    <collation id="120" parent="2" name="SERBIAN_BOSNIA_&amp;_HERZEGOVINA"/>
+    <collation id="121" parent="2" name="SERBIAN_MONTENEGRO"/>
+    <collation id="122" parent="2" name="SERBIAN_SERBIA"/>
+    <collation id="123" parent="2" name="SERBIAN_SERBIA_AND_MONTENEGRO"/>
+    <collation id="124" parent="2" name="SLOVAK"/>
+    <collation id="125" parent="2" name="SLOVAK_SLOVAKIA"/>
+    <collation id="126" parent="2" name="SLOVENIAN"/>
+    <collation id="127" parent="2" name="SLOVENIAN_SLOVENIA"/>
+    <collation id="128" parent="2" name="SPANISH"/>
+    <collation id="129" parent="2" name="SPANISH_ARGENTINA"/>
+    <collation id="130" parent="2" name="SPANISH_BOLIVIA"/>
+    <collation id="131" parent="2" name="SPANISH_CHILE"/>
+    <collation id="132" parent="2" name="SPANISH_COLOMBIA"/>
+    <collation id="133" parent="2" name="SPANISH_COSTA_RICA"/>
+    <collation id="134" parent="2" name="SPANISH_CUBA"/>
+    <collation id="135" parent="2" name="SPANISH_DOMINICAN_REPUBLIC"/>
+    <collation id="136" parent="2" name="SPANISH_ECUADOR"/>
+    <collation id="137" parent="2" name="SPANISH_EL_SALVADOR"/>
+    <collation id="138" parent="2" name="SPANISH_GUATEMALA"/>
+    <collation id="139" parent="2" name="SPANISH_HONDURAS"/>
+    <collation id="140" parent="2" name="SPANISH_MEXICO"/>
+    <collation id="141" parent="2" name="SPANISH_NICARAGUA"/>
+    <collation id="142" parent="2" name="SPANISH_PANAMA"/>
+    <collation id="143" parent="2" name="SPANISH_PARAGUAY"/>
+    <collation id="144" parent="2" name="SPANISH_PERU"/>
+    <collation id="145" parent="2" name="SPANISH_PUERTO_RICO"/>
+    <collation id="146" parent="2" name="SPANISH_SPAIN"/>
+    <collation id="147" parent="2" name="SPANISH_UNITED_STATES"/>
+    <collation id="148" parent="2" name="SPANISH_URUGUAY"/>
+    <collation id="149" parent="2" name="SPANISH_VENEZUELA"/>
+    <collation id="150" parent="2" name="SWEDISH"/>
+    <collation id="151" parent="2" name="SWEDISH_SWEDEN"/>
+    <collation id="152" parent="2" name="THAI"/>
+    <collation id="153" parent="2" name="THAI_THAILAND"/>
+    <collation id="154" parent="2" name="THAI_THAILAND_TH"/>
+    <collation id="155" parent="2" name="TURKISH"/>
+    <collation id="156" parent="2" name="TURKISH_TURKEY"/>
+    <collation id="157" parent="2" name="UKRAINIAN"/>
+    <collation id="158" parent="2" name="UKRAINIAN_UKRAINE"/>
+    <collation id="159" parent="2" name="VIETNAMESE"/>
+    <collation id="160" parent="2" name="VIETNAMESE_VIETNAM"/>
+    <role id="161" parent="2" name="PUBLIC"/>
+    <schema id="162" parent="2" name="INFORMATION_SCHEMA"/>
+    <schema id="163" parent="2" name="PUBLIC">
+      <Current>1</Current>
+    </schema>
+    <user id="164" parent="2" name="SA">
+      <Admin>1</Admin>
+    </user>
+    <table id="165" parent="163" name="ENTRADA"/>
+    <table id="166" parent="163" name="ESPECTACULO"/>
+    <table id="167" parent="163" name="ESTADIO"/>
+    <table id="168" parent="163" name="USUARIO"/>
+    <table id="169" parent="163" name="VENTA"/>
+    <column id="170" parent="165" name="CODENTRADA">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="171" parent="165" name="CODESPECTACULO">
+      <DasType>INTEGER|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="172" parent="165" name="CODESTADIO">
+      <DasType>INTEGER|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="173" parent="165" name="FECHAENTRADA">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="174" parent="165" name="PRECIOENTRADA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="175" parent="165" name="MAILUSUARIO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="176" parent="165" name="UBICACION">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="177" parent="165" name="CONSTRAINT_CB">
+      <ColNames>CODESPECTACULO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_1</RefKeyName>
+      <RefTableName>ESPECTACULO</RefTableName>
+    </foreign-key>
+    <foreign-key id="178" parent="165" name="CONSTRAINT_CBE">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_D</RefKeyName>
+      <RefTableName>ESTADIO</RefTableName>
+    </foreign-key>
+    <foreign-key id="179" parent="165" name="FK_ENTRADA_USUARIO">
+      <ColNames>MAILUSUARIO</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_6</RefKeyName>
+      <RefTableName>USUARIO</RefTableName>
+    </foreign-key>
+    <index id="180" parent="165" name="PRIMARY_KEY_4D">
+      <ColNames>CODENTRADA</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="181" parent="165" name="CONSTRAINT_CB_INDEX_4">
+      <ColNames>CODESPECTACULO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <index id="182" parent="165" name="CONSTRAINT_CBE_INDEX_4">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <index id="183" parent="165" name="FK_ENTRADA_USUARIO_INDEX_4">
+      <ColNames>MAILUSUARIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <key id="184" parent="165" name="CONSTRAINT_C">
+      <ColNames>CODENTRADA</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="185" parent="166" name="CODESPECTACULO">
+      <DasType>BIGINT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="186" parent="166" name="NOMBREESPECTACULO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="187" parent="166" name="CANTENTRADAS">
+      <DasType>INTEGER|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="188" parent="166" name="CODESTADIO">
+      <DasType>BIGINT|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="189" parent="166" name="PRECIOESPECTAULO">
+      <DasType>INTEGER|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="190" parent="166" name="FECHAESPECTACULO">
+      <DasType>DATE|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="191" parent="166" name="MAILVENDEDOR">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <foreign-key id="192" parent="166" name="CONSTRAINT_15">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_D</RefKeyName>
+      <RefTableName>ESTADIO</RefTableName>
+    </foreign-key>
+    <foreign-key id="193" parent="166" name="FK_ESPECTACULO_USUARIO">
+      <ColNames>MAILVENDEDOR</ColNames>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_6</RefKeyName>
+      <RefTableName>USUARIO</RefTableName>
+    </foreign-key>
+    <index id="194" parent="166" name="PRIMARY_KEY_C">
+      <ColNames>CODESPECTACULO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <index id="195" parent="166" name="CONSTRAINT_15_INDEX_C">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <index id="196" parent="166" name="FK_ESPECTACULO_USUARIO_INDEX_1">
+      <ColNames>MAILVENDEDOR</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <key id="197" parent="166" name="CONSTRAINT_1">
+      <ColNames>CODESPECTACULO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="198" parent="167" name="CODESTADIO">
+      <DasType>BIGINT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="199" parent="167" name="NOMBREESTADIO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="200" parent="167" name="CAPACIDADMAXIMA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="201" parent="167" name="CANTPLATEA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="202" parent="167" name="CANTCAMPO">
+      <DasType>INTEGER|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="203" parent="167" name="CANTVIP">
+      <DasType>INTEGER|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="204" parent="167" name="PRECIOPLATEA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="205" parent="167" name="PRECIOCAMPO">
+      <DasType>INTEGER|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <column id="206" parent="167" name="PRECIOVIP">
+      <DasType>INTEGER|0s</DasType>
+      <Position>9</Position>
+    </column>
+    <column id="207" parent="167" name="IMAGENESTADIO">
+      <DasType>BINARY LARGE OBJECT|0s</DasType>
+      <Position>10</Position>
+    </column>
+    <index id="208" parent="167" name="PRIMARY_KEY_9">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="209" parent="167" name="CONSTRAINT_D">
+      <ColNames>CODESTADIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="210" parent="168" name="MAILUSUARIO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="211" parent="168" name="NOMBREUSUARIO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="212" parent="168" name="CONTRASEÑA">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="213" parent="168" name="ES_ADMIN">
+      <DasType>BOOLEAN|0s</DasType>
+      <DefaultExpression>FALSE</DefaultExpression>
+      <Position>4</Position>
+    </column>
+    <column id="214" parent="168" name="ES_VENDEDOR">
+      <DasType>BOOLEAN|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <index id="215" parent="168" name="PRIMARY_KEY_FA">
+      <ColNames>MAILUSUARIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="216" parent="168" name="CONSTRAINT_6">
+      <ColNames>MAILUSUARIO</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="217" parent="169" name="MAILVENDEDOR">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="218" parent="169" name="MAILCOMPRADOR">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="219" parent="169" name="CODENTRADA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="220" parent="169" name="VALORVENTA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="221" parent="169" name="CODVENTA">
+      <DasType>BIGINT|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="222" parent="169" name="FECHAVENTA">
+      <DasType>DATE|0s</DasType>
+      <Position>6</Position>
+    </column>
+    <column id="223" parent="169" name="METODOPAGO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>7</Position>
+    </column>
+    <column id="224" parent="169" name="NOMBREENTARJETA">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>8</Position>
+    </column>
+    <column id="225" parent="169" name="NUMEROTARJETA">
+      <DasType>INTEGER|0s</DasType>
+      <Position>9</Position>
+    </column>
+    <column id="226" parent="169" name="CVV">
+      <DasType>INTEGER|0s</DasType>
+      <Position>10</Position>
+    </column>
+    <column id="227" parent="169" name="LOCALIDAD">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>11</Position>
+    </column>
+    <column id="228" parent="169" name="DIRECCIONFACTURAMIENTO">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>12</Position>
+    </column>
+    <column id="229" parent="169" name="CODIGOPOSTAL">
+      <DasType>CHARACTER VARYING(255)|0s</DasType>
+      <Position>13</Position>
+    </column>
+    <column id="230" parent="169" name="FECHAVENCIMIENTO">
+      <DasType>DATE|0s</DasType>
+      <Position>14</Position>
+    </column>
+    <foreign-key id="231" parent="169" name="CONSTRAINT_4D">
+      <ColNames>MAILVENDEDOR</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_6</RefKeyName>
+      <RefTableName>USUARIO</RefTableName>
+    </foreign-key>
+    <foreign-key id="232" parent="169" name="CONSTRAINT_4DC">
+      <ColNames>MAILCOMPRADOR</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_6</RefKeyName>
+      <RefTableName>USUARIO</RefTableName>
+    </foreign-key>
+    <foreign-key id="233" parent="169" name="CONSTRAINT_4DC7">
+      <ColNames>CODENTRADA</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <OnDelete>restrict</OnDelete>
+      <OnUpdate>restrict</OnUpdate>
+      <RefKeyName>CONSTRAINT_C</RefKeyName>
+      <RefTableName>ENTRADA</RefTableName>
+    </foreign-key>
+    <index id="234" parent="169" name="CONSTRAINT_4D_INDEX_7">
+      <ColNames>MAILVENDEDOR</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <index id="235" parent="169" name="CONSTRAINT_4DC_INDEX_7">
+      <ColNames>MAILCOMPRADOR</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+    <index id="236" parent="169" name="CONSTRAINT_4DC7_INDEX_7">
+      <ColNames>CODENTRADA</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+    </index>
+  </database-model>
+</dataSource>

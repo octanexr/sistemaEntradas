@@ -98,67 +98,6 @@ public class HomePage implements ActionListener {
     EntradaService entradaService = new EntradaService();
     JButton botonVolver3 = new JButton("Volver");
 
-    private void cargarVentas(Vendedor vendedor){
-        try {
-            ArrayList<Venta> ventas = vendedor.verVentas(vendedor);
-            for(Venta venta:ventas){
-                entradasVendidasComboBox.addItem(venta);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-
-    private void cargarEspectaculos(){
-        try {
-            ArrayList<Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
-            for(Espectaculo espectaculo:espectaculos){
-
-                espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
-
-                espectaculoComboBox.addItem(espectaculo);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    private void cargarEstadios2() throws ServiceException{
-        try{
-            ArrayList<Estadio> estadios = estadioService.buscarTodosEstadio();
-            for(Estadio a:estadios){
-                estadiosComboBox.addItem(a);
-            }
-        }catch (ServiceException e){
-            throw new RuntimeException(e);
-        }
-    }
-
-    private void cargarEspectaculos2() throws ServiceException {
-        espectaculos = espectaculoService.buscarTodosEspectaculo();
-
-        for(Espectaculo espectaculo: espectaculos){
-            espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
-            System.out.println(espectaculo.toString2());
-        }
-    }
-
-    private void cargarEspectaculoVendedor(Vendedor vendedor) throws ServiceException {
-        espectaculos = espectaculoService.buscarTodosEspectaculosPorVendedor(vendedor.getMailUsuario());
-        vendedor.setEspectaculos(espectaculos);
-    }
-
-    private void cargarEntradas() throws ServiceException {
-        entradas = entradaService.buscarTodosUsuarioEntrada(comprador1.getMailUsuario());
-        comprador1.setEntradas(entradas);
-    }
-
-    private void cargarEstadios() throws ServiceException{
-        estadios = estadioService.buscarTodosEstadio();
-    }
 
     public HomePage(Usuario usuario,JFrame frame) throws ServiceException {
         frameHP = frame;
@@ -172,7 +111,8 @@ public class HomePage implements ActionListener {
 
         if(es_vendedor){
             vendedor1 = (Vendedor) usuario;
-            cargarVentas(vendedor1);
+            vendedor1.cargarVentas(vendedor1,entradasVendidasComboBox);
+
 
         }
 
@@ -488,8 +428,11 @@ public class HomePage implements ActionListener {
 
 
         if(es_admin && !es_vendedor){
-            cargarEstadios();
-            cargarEspectaculos2();
+            Espectaculo espectaculo = new Espectaculo();
+            Estadio estadio = new Estadio();
+
+            estadios = estadio.cargarEstadios(estadioService);
+            espectaculos = espectaculo.cargarEspectaculos2(espectaculoService);
             frame.add(panelAdmin);
             panelAdmin.setVisible(true);
 
@@ -548,8 +491,11 @@ public class HomePage implements ActionListener {
         }
 
         else if(!es_vendedor && !es_admin){
-            cargarEspectaculos2();
-            cargarEntradas();
+            Espectaculo espectaculo = new Espectaculo();
+            Entrada entrada = new Entrada();
+
+            espectaculos = espectaculo.cargarEspectaculos2(espectaculoService);
+            entradas = entrada.cargarEntradas(entradaService,comprador1);
             System.out.println(comprador1.toString2());
             frame.add(panelComprador);
             frame.add(panelSeleccionComprador);
@@ -651,7 +597,8 @@ public class HomePage implements ActionListener {
         }
 
         else if(!es_admin && es_vendedor){
-            cargarEspectaculoVendedor(vendedor1);
+            espectaculos = vendedor1.cargarEspectaculoVendedor(vendedor1,espectaculoService,estadioService);
+
             System.out.println(vendedor1.toString2());
             frame.add(panelVendedor);
             frame.add(panelEntradasVendidas);
@@ -705,7 +652,9 @@ public class HomePage implements ActionListener {
             panelAdmin.setVisible(false);
             panelImagenesEstadio.setVisible(true);
             try {
-                cargarEstadios2();
+                Estadio estadio = new Estadio();
+
+                estadio.cargarEstadios2(estadioService,estadiosComboBox);
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
             }
@@ -731,7 +680,7 @@ public class HomePage implements ActionListener {
             Image imagenRedimensionada = imagen.getScaledInstance(200,200,Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(imagenRedimensionada);
             imagenEstadioLabel.setIcon(imageIcon);
-
+            System.out.println(b.toString2());
 
         }
 
@@ -753,6 +702,7 @@ public class HomePage implements ActionListener {
             Estadio b = (Estadio) estadiosComboBox.getSelectedItem();
             try {
                 estadioService.subirImagenEstadio(b.getCodEstadio(),imagenBytes);
+                b.setBytesImagen(imagenBytes);
                 JOptionPane.showMessageDialog(null, "Imagen subida con exito!", "Exito", JOptionPane.INFORMATION_MESSAGE);
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
@@ -770,7 +720,11 @@ public class HomePage implements ActionListener {
         if(e.getSource()==botonGenerarInforme){
             panelAdmin.setVisible(false);
             panelAdmin = null;
-            new RealizarInformePage(frameHP,comprador1);
+            try {
+                new RealizarInformePage(frameHP,comprador1);
+            } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            }
 
         }
 
@@ -790,18 +744,15 @@ public class HomePage implements ActionListener {
 
         }
 
-        if(e.getSource()==botonVerEspectaculos){
+        if(e.getSource()==botonVerEspectaculos || e.getSource()==botonVerEspectaculos2){
+            Espectaculo espectaculo = new Espectaculo();
+
             panelComprador.setVisible(false);
-            cargarEspectaculos();
+            espectaculo.cargarEspectaculos(espectaculoService,espectaculoComboBox);
             panelSeleccionComprador.setVisible(true);
 
         }
-        if(e.getSource()==botonVerEspectaculos2){
-            panelComprador.setVisible(false);
-            cargarEspectaculos();
-            panelSeleccionComprador.setVisible(true);
 
-        }
 
         if(e.getSource()==botonVerEntradas){
             panelComprador.setVisible(false);

@@ -51,10 +51,12 @@ public class RealizarInformePage implements ActionListener {
 
     }
 
-    public RealizarInformePage(JFrame frame, Usuario usuario){
+    public RealizarInformePage(JFrame frame, Usuario usuario) throws ServiceException {
+        Espectaculo espectaculo = new Espectaculo();
+
         comprador=(Comprador) usuario;
         frame1=frame;
-        cargarEspectaculos();
+        espectaculo.cargarEspectaculos(espectaculoService,espectaculosComboBox);
 
         panel.setBounds(0,0,1240,720);
         panel.setVisible(true);

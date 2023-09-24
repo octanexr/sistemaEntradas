@@ -10,7 +10,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Comprador extends Usuario{
-    private Espectaculo EspectaculoAsignado;
     private ArrayList<Entrada> entradas = new ArrayList<>();
     private boolean esAdmin;
     private boolean esVendedor;
@@ -20,9 +19,8 @@ public class Comprador extends Usuario{
         super(nombreUsuario, mailUsuario, contraseña);
     }
 
-    public Comprador(String nombreUsuario, String mailUsuario, String contraseña, Espectaculo espectaculoAsignado, ArrayList<Entrada> entradas, boolean esAdmin, boolean esVendedor) {
+    public Comprador(String nombreUsuario, String mailUsuario, String contraseña,  ArrayList<Entrada> entradas, boolean esAdmin, boolean esVendedor) {
         super(nombreUsuario, mailUsuario, contraseña);
-        EspectaculoAsignado = espectaculoAsignado;
         this.entradas = entradas;
         this.esAdmin = esAdmin;
         this.esVendedor = esVendedor;
@@ -94,15 +92,6 @@ public class Comprador extends Usuario{
     }
 
 
-    public void setEspectaculoAsignado(Espectaculo espectaculoAsignado) {
-        EspectaculoAsignado = espectaculoAsignado;
-    }
-
-
-
-    public Espectaculo getEspectaculoAsignado() {
-        return EspectaculoAsignado;
-    }
 
     public void setEntradas(ArrayList<Entrada> entradas) {
         this.entradas = entradas;
@@ -126,8 +115,7 @@ public class Comprador extends Usuario{
 
 
     public String toString2() {
-        return "Comprador{" +
-                "EspectaculoAsignado=" + EspectaculoAsignado +
+        return "Comprador{" + super.toString() +
                 ", entradas=" + entradas +
                 ", esAdmin=" + esAdmin +
                 ", esVendedor=" + esVendedor +
