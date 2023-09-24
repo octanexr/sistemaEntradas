@@ -115,6 +115,9 @@ public class HomePage implements ActionListener {
         try {
             ArrayList<Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
             for(Espectaculo espectaculo:espectaculos){
+
+                espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
+
                 espectaculoComboBox.addItem(espectaculo);
             }
         } catch (ServiceException e) {
@@ -136,6 +139,11 @@ public class HomePage implements ActionListener {
 
     private void cargarEspectaculos2() throws ServiceException {
         espectaculos = espectaculoService.buscarTodosEspectaculo();
+
+        for(Espectaculo espectaculo: espectaculos){
+            espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
+            System.out.println(espectaculo.toString2());
+        }
     }
 
     private void cargarEspectaculoVendedor(Vendedor vendedor) throws ServiceException {

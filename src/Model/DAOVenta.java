@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DAOVenta implements DAO<Venta> {
 
     private String DB_JDBC_DRIVER="org.h2.Driver";
-    private String DB_URL="jdbc:h2:C:/Users/octir/OneDrive/Escritorio/Sistema de enradas/base/baseEntradas";
+    private String DB_URL="jdbc:h2:C:/Users/Compumax/Documents/GitHub/sistemaEntradas/base/baseEntradas";
     private String DB_USER="sa";
     private String DB_PASSWORD="";
 
