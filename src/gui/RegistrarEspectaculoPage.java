@@ -4,6 +4,7 @@ import Controlador.Comprador;
 import Controlador.Espectaculo;
 import Controlador.Estadio;
 import Controlador.Vendedor;
+import Model.DAOException;
 import service.*;
 
 import javax.swing.*;
@@ -44,22 +45,12 @@ public class RegistrarEspectaculoPage implements ActionListener {
     VendedorService vendedorService = new VendedorService();
 
 
-    private void cargarVendedores(){
-        try {
-            ArrayList<Vendedor> vendedores = vendedorService.buscarTodosVendedor();
-            for(Vendedor vendedor:vendedores){
-                vendedorComboBox.addItem(vendedor);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 
-    public RegistrarEspectaculoPage(Comprador comprador, JFrame frame){
+
+    public RegistrarEspectaculoPage(Comprador comprador, JFrame frame) throws DAOException {
         frameREspectaculo = frame;
-        cargarVendedores();
+        vendedorComboBox = vendedorService.cargarVendedores();
         comprador1 = comprador;
         System.out.println(comprador1);
 
@@ -129,20 +120,12 @@ public class RegistrarEspectaculoPage implements ActionListener {
 
         frame.add(panelREspectaculo);
 
-        cargarEstadios();
+        ArrayList<Estadio> estadios = estadioService.cargarEstadios();
+        for(Estadio estadio : estadios)
+            estadioComboBox.addItem(estadio);
 
     }
 
-    private void cargarEstadios() {
-        try {
-            ArrayList<Estadio> estadios = estadioService.buscarTodosEstadio();
-            for (Estadio estadio : estadios) {
-                estadioComboBox.addItem(estadio);
-            }
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -159,6 +142,8 @@ public class RegistrarEspectaculoPage implements ActionListener {
                 panelREspectaculo = null;
                 new HomePage(comprador1,frameREspectaculo);
             } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            } catch (DAOException ex) {
                 throw new RuntimeException(ex);
             }
 
@@ -189,15 +174,18 @@ public class RegistrarEspectaculoPage implements ActionListener {
             int codigoMax = 6;
             long codEspectaculo = random.nextLong((long) Math.pow(10, codigoMax));
 
+            Estadio estadio = new Estadio();
 
-            Espectaculo espectaculo1 = null;
             try {
-                espectaculo1 = new Espectaculo(codEspectaculo,nombreEspectaculo,cantEntradas,fechaEspectaculo,codEstadio,precioEspectaulo,mailVendedor);
+               estadio = estadioService.buscar(codEstadio);
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
             }
-            espectaculo1.guardarEspectaculo(espectaculo1,capacidadMaxina);
 
+
+            Espectaculo espectaculo1 = null;
+            espectaculo1 = new Espectaculo(codEspectaculo,nombreEspectaculo,cantEntradas,fechaEspectaculo,codEstadio,estadio,precioEspectaulo,mailVendedor);
+            espectaculoService.guardarEspectaculo(espectaculo1,capacidadMaxina);
 
         }
 

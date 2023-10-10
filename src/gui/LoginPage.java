@@ -2,6 +2,8 @@ package gui;
 
 import Controlador.Comprador;
 import Controlador.Vendedor;
+import service.CompradorService;
+import service.VendedorService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +47,8 @@ public class LoginPage implements ActionListener {
     JPanel panelIniciarSesionComprador = new JPanel();
     JPanel fondoPanelIniciarSesionComprador = new JPanel();
 
-
+    CompradorService compradorService = new CompradorService();
+    VendedorService vendedorService = new VendedorService();
 
     public LoginPage() {
 
@@ -257,7 +260,7 @@ public class LoginPage implements ActionListener {
             String contraseña = constrasenaUsuarioField.getText();
 
             Comprador comprador = new Comprador(emailUsuario,nombreUsuaro,contraseña);
-            if(comprador.buscarUsuario(emailUsuario,nombreUsuaro,contraseña,frame)){
+            if(compradorService.buscarUsuario(emailUsuario,nombreUsuaro,contraseña,frame)){
                 panelIniciarSesionComprador.setVisible(false);
             }
 
@@ -269,7 +272,7 @@ public class LoginPage implements ActionListener {
             String contraseña = constrasenaUsuarioField2.getText();
 
             Vendedor vendedor = new Vendedor(emailUsuario,nombreUsuaro,contraseña);
-            if(vendedor.buscarUsuario(emailUsuario,nombreUsuaro,contraseña,frame)){
+            if(vendedorService.buscarUsuario(emailUsuario,nombreUsuaro,contraseña,frame)){
                 panelIniciarSesionVendedor.setVisible(false);
             }
 

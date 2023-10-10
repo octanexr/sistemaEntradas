@@ -1,9 +1,11 @@
 package service;
 
+import Controlador.Vendedor;
 import Controlador.Venta;
 import Model.DAOException;
 import Model.DAOVenta;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class VentaService {
@@ -38,5 +40,26 @@ public class VentaService {
         }
 
     }
+
+    public ArrayList<Venta> verVentas(Vendedor vendedor) throws ServiceException {
+        try {
+            ArrayList<Venta> arrayList = new ArrayList<>();
+            arrayList = daoVenta.buscarTodosUsuario(vendedor.getMailUsuario());
+
+
+            return arrayList;
+        } catch (DAOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void guardarVenta(Venta venta) throws ServiceException {
+        VentaService ventaService = new VentaService();
+        ventaService.GuardarVenta(venta);
+        JOptionPane.showMessageDialog(null, "Compra realizada con exito", "Información", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+
 
 }

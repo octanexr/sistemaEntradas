@@ -4,6 +4,7 @@ import Controlador.Comprador;
 import Controlador.Espectaculo;
 import Controlador.Usuario;
 import Controlador.Venta;
+import Model.DAOException;
 import service.EspectaculoService;
 import service.ServiceException;
 import service.VentaService;
@@ -39,24 +40,13 @@ public class RealizarInformePage implements ActionListener {
     Comprador comprador;
 
 
-    private void cargarEspectaculos(){
-        try {
-            ArrayList<Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
-            for(Espectaculo espectaculo:espectaculos){
-                espectaculosComboBox.addItem(espectaculo);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
     public RealizarInformePage(JFrame frame, Usuario usuario) throws ServiceException {
         Espectaculo espectaculo = new Espectaculo();
 
         comprador=(Comprador) usuario;
         frame1=frame;
-        espectaculo.cargarEspectaculos(espectaculoService,espectaculosComboBox);
+        espectaculoService.cargarEspectaculos(espectaculosComboBox);
 
         panel.setBounds(0,0,1240,720);
         panel.setVisible(true);
@@ -174,6 +164,8 @@ public class RealizarInformePage implements ActionListener {
                 panel = null;
                 new HomePage(comprador,frame1);
             } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            } catch (DAOException ex) {
                 throw new RuntimeException(ex);
             }
         }

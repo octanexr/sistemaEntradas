@@ -31,26 +31,8 @@ public class Venta {
     private String codigoPostal;
 
 
-    public Venta(long codventa, String mailVendedor, String mailComprador, long codEntrada, String fechaVenta, int valorVenta, String tipoTarjeta, String nombreEnTarjeta, int numeroTarjeta, String fechaVencimiento, int cvv, String localidad, String direccionFacturacion, String codigoPostal) {
+    public Venta(long codventa, Vendedor vendedor, String mailComprador, Comprador comprador, long codEntrada, Entrada entrada, String fechaVenta, int valorVenta, String tipoTarjeta, String nombreEnTarjeta, int numeroTarjeta, String fechaVencimiento, int cvv, String localidad, String direccionFacturacion, String codigoPostal) {
         this.codventa = codventa;
-        this.mailVendedor = mailVendedor;
-        this.mailComprador = mailComprador;
-        this.codEntrada = codEntrada;
-        this.fechaVenta = fechaVenta;
-        this.valorVenta = valorVenta;
-        this.tipoTarjeta = tipoTarjeta;
-        this.nombreEnTarjeta = nombreEnTarjeta;
-        this.numeroTarjeta = numeroTarjeta;
-        this.fechaVencimiento = fechaVencimiento;
-        this.cvv = cvv;
-        this.localidad = localidad;
-        this.direccionFacturacion = direccionFacturacion;
-        this.codigoPostal = codigoPostal;
-    }
-
-    public Venta(long codventa, String mailVendedor, Vendedor vendedor, String mailComprador, Comprador comprador, long codEntrada, Entrada entrada, String fechaVenta, int valorVenta, String tipoTarjeta, String nombreEnTarjeta, int numeroTarjeta, String fechaVencimiento, int cvv, String localidad, String direccionFacturacion, String codigoPostal) {
-        this.codventa = codventa;
-        this.mailVendedor = mailVendedor;
         this.vendedor = vendedor;
         this.mailComprador = mailComprador;
         this.comprador = comprador;
@@ -68,14 +50,6 @@ public class Venta {
         this.codigoPostal = codigoPostal;
     }
 
-    public Venta(long codventa, String mailVendedor, String mailComprador, long codEntrada, String fechaVenta, int valorVenta) {
-        this.codventa = codventa;
-        this.mailVendedor = mailVendedor;
-        this.mailComprador = mailComprador;
-        this.codEntrada = codEntrada;
-        this.fechaVenta = fechaVenta;
-        this.valorVenta = valorVenta;
-    }
 
     public Venta() {
     }
@@ -91,12 +65,7 @@ public class Venta {
 
     }
 
-    public void guardarVenta(Venta venta) throws ServiceException {
-        VentaService ventaService = new VentaService();
-        ventaService.GuardarVenta(venta);
-        JOptionPane.showMessageDialog(null, "Compra realizada con exito", "Información", JOptionPane.INFORMATION_MESSAGE);
 
-    }
 
     public void cancelarVenta(Venta venta, Espectaculo espectaculo) throws ServiceException {
         EntradaService entradaService = new EntradaService();
@@ -126,7 +95,7 @@ public class Venta {
     }
 
     public String getMailVendedor() {
-        return mailVendedor;
+        return vendedor.getMailUsuario();
     }
 
     public String getMailComprador() {

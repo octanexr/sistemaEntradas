@@ -1,8 +1,6 @@
 package Controlador;
 
-import service.EspectaculoService;
-import service.EstadioService;
-import service.ServiceException;
+
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -12,47 +10,34 @@ public class Espectaculo {
     private String nombreEspectaculo;
     private long codEstadio;
     private Estadio estadio;
-    private Entrada entrada;
     private int cantEntradas;
     private String fechaEvento;
     private String mailVendedor;
     private int precioEspectaculo;
 
-    EstadioService estadioService = new EstadioService();
+
 
 
     public Espectaculo(long codEspectaculo,String nombreEspectaculo, int cantEntradas,
-                       String fechaEvento, long codEstadio, int precioEspectaculo, String mailVendedor) throws ServiceException {
+                       String fechaEvento, long codEstadio, Estadio estadio, int precioEspectaculo, String mailVendedor)  {
         this.codEspectaculo = codEspectaculo;
         this.nombreEspectaculo = nombreEspectaculo;
         this.cantEntradas = cantEntradas;
         this.fechaEvento = fechaEvento;
         this.codEstadio = codEstadio;
-        this.estadio = estadioService.buscar(codEstadio);
+        this.estadio = estadio;
         this.precioEspectaculo=precioEspectaculo;
         this.mailVendedor = mailVendedor;
 
     }
 
-    public Espectaculo(long codEspectaculo, String nombreEvento, Long codEstadio, Estadio estadio,
-                       Entrada entrada, int cantEntradas, String fechaEvento) {
-        this.codEspectaculo = codEspectaculo;
-        this.nombreEspectaculo = nombreEvento;
-        this.codEstadio = codEstadio;
-        this.estadio = estadio;
-        this.entrada = entrada;
-        this.cantEntradas = cantEntradas;
-        this.fechaEvento = fechaEvento;
-    }
+
 
 
 
     public Espectaculo() {
     }
 
-    public void asignarEstadio(Estadio estadio){
-
-    }
 
     public long getCodEspectaculo() {
         return codEspectaculo;
@@ -63,77 +48,6 @@ public class Espectaculo {
     }
 
 
-    public Entrada getEntrada() {
-        return entrada;
-    }
-
-    public void guardarEspectaculo(Espectaculo espectaculo, int capacidadMaxima){
-        EspectaculoService espectaculoService = new EspectaculoService();
-
-        if(cantEntradas<=capacidadMaxima) {
-
-            try {
-                espectaculoService.guardarEspectaculo(espectaculo);
-                JOptionPane.showMessageDialog(null, "Se registro el espectaculo con exito!", "Exito", JOptionPane.INFORMATION_MESSAGE);;
-            } catch (ServiceException ex) {
-                throw new RuntimeException(ex);
-            }
-
-        }
-        else
-            JOptionPane.showMessageDialog(null, "La cantidad de entradas es mayor a la capacidad maxima", "Error", JOptionPane.ERROR_MESSAGE);
-
-    }
-
-    public ArrayList<Espectaculo> cargarEspectaculos() throws ServiceException {
-        EspectaculoService espectaculoService = new EspectaculoService();
-        ArrayList <Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
-        return espectaculos;
-    }
-
-    public void restarEntradas(Espectaculo espectaculo) throws ServiceException {
-        EspectaculoService espectaculoService = new EspectaculoService();
-
-        espectaculoService.modificarEspectaculo(espectaculo);
-        espectaculo.setCantEntradas(espectaculo.getCantEntradas() - 1) ;
-
-    }
-
-    public void sumarEntradas(Espectaculo espectaculo) throws ServiceException{
-        EspectaculoService espectaculoService = new EspectaculoService();
-        espectaculoService.modificarEspectaculo2(espectaculo);
-        espectaculo.setCantEntradas(espectaculo.getCantEntradas()+1);
-
-    }
-
-    public JComboBox<Espectaculo> cargarEspectaculos(EspectaculoService espectaculoService, JComboBox<Espectaculo> espectaculoComboBox){
-        try {
-            ArrayList<Espectaculo> espectaculos = espectaculoService.buscarTodosEspectaculo();
-            for(Espectaculo espectaculo:espectaculos){
-
-                espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
-
-                espectaculoComboBox.addItem(espectaculo);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-        return espectaculoComboBox;
-
-    }
-
-    public ArrayList<Espectaculo> cargarEspectaculos2(EspectaculoService espectaculoService) throws ServiceException {
-        ArrayList<Espectaculo> espectaculos = new ArrayList<>();
-        espectaculos = espectaculoService.buscarTodosEspectaculo();
-
-        for(Espectaculo espectaculo: espectaculos){
-            espectaculo.setEstadio(estadioService.buscar(espectaculo.getCodEstadio()));
-            System.out.println(espectaculo.toString2());
-        }
-
-        return espectaculos;
-    }
 
 
 
@@ -165,9 +79,6 @@ public class Espectaculo {
         return codEstadio;
     }
 
-    public void setEntrada(Entrada entrada) {
-        this.entrada = entrada;
-    }
 
     public void setCantEntradas(int cantEntradas) {
         this.cantEntradas = cantEntradas;
@@ -197,7 +108,6 @@ public class Espectaculo {
                 ", nombreEspectaculo='" + nombreEspectaculo + '\'' +
                 ", codEstadio=" + codEstadio +
                 ", estadio=" + estadio+
-                ", entrada=" + entrada +
                 ", cantEntradas=" + cantEntradas +
                 ", fechaEvento='" + fechaEvento + '\'' +
                 ", mailVendedor='" + mailVendedor + '\'' +

@@ -1,6 +1,7 @@
 package gui;
 
 import Controlador.*;
+import Model.DAOException;
 import service.*;
 
 import javax.swing.*;
@@ -68,6 +69,9 @@ public class ConfirmarCompraPage implements ActionListener {
     private String codigoPostal;
     private int precioTotal1;
     private Venta venta;
+    VentaService ventaService = new VentaService();
+    EntradaService entradaService = new EntradaService();
+    EspectaculoService espectaculoService = new EspectaculoService();
 
 
     public ConfirmarCompraPage(Entrada entrada, Espectaculo espectaculo,Comprador comprador,JFrame frame,int precioTotal){
@@ -288,7 +292,7 @@ public class ConfirmarCompraPage implements ActionListener {
             int codMax = 5;
             long codVenta = random.nextLong((long) Math.pow(10, codMax));
 
-            venta = new Venta(codVenta,mailVendedor,vendedor,mailComprador,comprador,codEntrada, entrada1,fechaVenta,valorVenta,metodoPagoSeleccionado,nombreEnTarjeta,numeroTarjeta,fechaVencimiento,cvv,localidad,direccionFacturacion,codigoPostal);
+            venta = new Venta(codVenta,vendedor,mailComprador, comprador,codEntrada, entrada1,fechaVenta,valorVenta,metodoPagoSeleccionado,nombreEnTarjeta,numeroTarjeta,fechaVencimiento,cvv,localidad,direccionFacturacion,codigoPostal);
 
             precioTotalLabel.setText("Precio total a pagar: $" + precioTotal1);
             metodoDePagoSeleccionadolabel.setText("Metodo de pago seleccionado: " + metodoPagoSeleccionado);
@@ -302,10 +306,10 @@ public class ConfirmarCompraPage implements ActionListener {
 
         if(e.getSource()==botonComprar){
             try {
-                venta.guardarVenta(venta);
+                ventaService.guardarVenta(venta);
                 panelConfirmacionCC.setVisible(false);
                 new HomePage(comprador1,frameCC);
-            } catch (ServiceException ex) {
+            } catch (ServiceException | DAOException ex) {
                 throw new RuntimeException(ex);
             }
         }
@@ -313,10 +317,11 @@ public class ConfirmarCompraPage implements ActionListener {
         if(e.getSource()==botonCancelar){
             panelCC.setVisible(false);
             try {
-                entrada1.eliminarEntrada(entrada1);
-                espectaculo1.sumarEntradas(espectaculo1);
+                entradaService.eliminarEntrada(entrada1.getCodEntrada());
+                espectaculoService.sumarEntradas(espectaculo1);
+
                 new HomePage(comprador1,frameCC);
-            } catch (ServiceException ex) {
+            } catch (ServiceException | DAOException ex) {
                 throw new RuntimeException(ex);
             }
 
@@ -332,7 +337,7 @@ public class ConfirmarCompraPage implements ActionListener {
             try {
                 panelConfirmacionCC.setVisible(false);
                 new HomePage(comprador1,frameCC);
-            } catch (ServiceException ex) {
+            } catch (ServiceException | DAOException ex) {
                 throw new RuntimeException(ex);
             }
 

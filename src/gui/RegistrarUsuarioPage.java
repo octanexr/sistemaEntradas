@@ -2,6 +2,8 @@ package gui;
 
 import Controlador.Comprador;
 import Controlador.Vendedor;
+import service.CompradorService;
+import service.VendedorService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,7 +43,8 @@ public class RegistrarUsuarioPage implements ActionListener {
     JButton botonReset = new JButton("Reset");
     JButton botonReset2 = new JButton("Reset");
 
-
+    CompradorService compradorService = new CompradorService();
+    VendedorService vendedorService = new VendedorService();
 
     public RegistrarUsuarioPage( )
     {
@@ -235,7 +238,7 @@ public class RegistrarUsuarioPage implements ActionListener {
             String contraseñaUsuario = contraseñaUsuarioField.getText();
 
             Comprador comprador = new Comprador(mailUsuario,nombreUsuario,contraseñaUsuario);
-            if(comprador.registrarUsuario(mailUsuario,nombreUsuario,contraseñaUsuario)){
+            if( compradorService.registrarUsuario(mailUsuario,nombreUsuario,contraseñaUsuario)){
                 frame.dispose();
             }
 
@@ -247,7 +250,7 @@ public class RegistrarUsuarioPage implements ActionListener {
             String contraseñaUsuario = contraseñaUsuarioField2.getText();
 
             Vendedor vendedor = new Vendedor(mailUsuario,nombreUsuario,contraseñaUsuario);
-            if(vendedor.registrarUsuario(nombreUsuario,mailUsuario,contraseñaUsuario)){
+            if(vendedorService.registrarUsuario(nombreUsuario,mailUsuario,contraseñaUsuario)){
                 frame.dispose();
             }
 

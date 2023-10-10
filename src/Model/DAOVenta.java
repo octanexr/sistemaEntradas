@@ -90,7 +90,7 @@ public class DAOVenta implements DAO<Venta> {
                 venta.setTipoTarjeta(resultSet.getString("METODOPAGO"));
                 venta.setNombreEnTarjeta(resultSet.getString("NOMBREENTARJETA"));
                 venta.setNumeroTarjeta(resultSet.getInt("NUMEROTARJETA"));
-                venta.setFechaVenta(resultSet.getString("FECHAVENCIMIENTO"));
+                venta.setFechaVencimiento(resultSet.getString("FECHAVENCIMIENTO"));
                 venta.setCvv(resultSet.getInt("CVV"));
                 venta.setLocalidad(resultSet.getString("LOCALIDAD"));
                 venta.setDireccionFacturacion("DIRECCIONFACTURAMIENTO");

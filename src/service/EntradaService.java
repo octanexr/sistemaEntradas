@@ -1,5 +1,6 @@
 package service;
 
+import Controlador.Comprador;
 import Controlador.Entrada;
 import Model.DAOEntrada;
 import Model.DAOException;
@@ -52,6 +53,16 @@ public class EntradaService {
         }
 
     }
+
+    public ArrayList<Entrada> cargarEntradas(Comprador comprador1) throws DAOException {
+        ArrayList<Entrada> entradas = new ArrayList<>();
+
+        entradas = daoEntrada.buscarTodosUsuario(comprador1.getMailUsuario());
+        comprador1.setEntradas(entradas);
+
+        return entradas;
+    }
+
 
 
 }

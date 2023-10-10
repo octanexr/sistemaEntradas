@@ -1,18 +1,14 @@
 package Controlador;
 
-import gui.HomePage;
-import gui.LoginPage;
-import service.CompradorService;
-import service.ServiceException;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Comprador extends Usuario{
     private ArrayList<Entrada> entradas = new ArrayList<>();
     private boolean esAdmin;
     private boolean esVendedor;
+    private ArrayList<Estadio> estadios;
+    private ArrayList<Espectaculo> espectaculos;
 
 
     public Comprador(String nombreUsuario, String mailUsuario, String contraseña) {
@@ -24,6 +20,14 @@ public class Comprador extends Usuario{
         this.entradas = entradas;
         this.esAdmin = esAdmin;
         this.esVendedor = esVendedor;
+    }
+
+    public Comprador(String nombreUsuario, String mailUsuario, String contraseña, boolean esAdmin, boolean esVendedor, ArrayList<Estadio> estadios, ArrayList<Espectaculo> espectaculos) {
+        super(nombreUsuario, mailUsuario, contraseña);
+        this.esAdmin = esAdmin;
+        this.esVendedor = esVendedor;
+        this.estadios = estadios;
+        this.espectaculos = espectaculos;
     }
 
     public Comprador(){
@@ -44,53 +48,6 @@ public class Comprador extends Usuario{
     public Espectaculo verEspectaculo(){
         return verEspectaculo();
     }
-
-    @Override
-    public boolean buscarUsuario(String emailUsuario, String nombreUsuario, String contraseña, JFrame frame){
-        CompradorService compradorService = new CompradorService();
-        try {
-            Usuario usuario = compradorService.buscar2Comprador(emailUsuario);
-            if (usuario != null) {
-                if(usuario.getContraseña().equals(contraseña)){
-                    if(usuario.getNombreUsuario().equals(nombreUsuario)){
-                        HomePage homePage = new HomePage(usuario,frame);
-                        return true;
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Nombre de usuario o contraeña incorrectos","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-                        return false;
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(null,"Nombre de usuario o contraeña incorrectos","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-                    return false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null,"Usuario inexistente","ADVERTENCIA",JOptionPane.WARNING_MESSAGE);
-                return false;
-            }
-        } catch (ServiceException ex) {
-            throw new RuntimeException(ex);
-        }
-
-    }
-
-    @Override
-    public boolean registrarUsuario(String emailUsuario, String nombreUsuario, String contraseña) {
-        Comprador comprador = new Comprador(emailUsuario,nombreUsuario,contraseña);
-        CompradorService compradorService = new CompradorService();
-
-        try{
-            compradorService.guardarComprador(comprador);
-            JOptionPane.showMessageDialog(null, "Se registro el usuario con exito!", "Exito", JOptionPane.INFORMATION_MESSAGE);;
-            LoginPage loginPage = new LoginPage();
-            return true;
-
-        } catch (ServiceException ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-
 
 
     public void setEntradas(ArrayList<Entrada> entradas) {
@@ -113,6 +70,13 @@ public class Comprador extends Usuario{
         this.esVendedor = esVendedor;
     }
 
+    public void setEstadios(ArrayList<Estadio> estadios) {
+        this.estadios = estadios;
+    }
+
+    public void setEspectaculos(ArrayList<Espectaculo> espectaculos) {
+        this.espectaculos = espectaculos;
+    }
 
     public String toString2() {
         return "Comprador{" + super.toString() +

@@ -1,10 +1,6 @@
 package Controlador;
 
-import service.EstadioService;
-import service.ServiceException;
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Estadio {
@@ -36,63 +32,6 @@ public class Estadio {
 
     }
 
-
-
-    public void asignarLugar(){
-
-    }
-
-    public void registrarEstadio(int cantCampo, int cantPlatea, int cantVip, int capacidadMaxima, Estadio estadio){
-        EstadioService estadioService = new EstadioService();
-
-        if(cantCampo+cantPlatea+cantVip <= capacidadMaxima) {
-
-            try {
-                estadioService.guardarEstadio(estadio);
-                JOptionPane.showMessageDialog(null, "Se registro el estadio con exito!", "Exito", JOptionPane.INFORMATION_MESSAGE);;
-            } catch (ServiceException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "La suma de los asientos es mayor a la cantidad maxima", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
-
-    public byte[] buscarImagenEstadio(Estadio estadio) throws ServiceException {
-        EstadioService estadioService = new EstadioService();
-        return estadioService.buscarImagenEstadio(estadio.getCodEstadio());
-
-    }
-
-    public ArrayList<Estadio> cargarEstadios(EstadioService estadioService) throws ServiceException{
-        ArrayList<Estadio> estadios = new ArrayList<>();
-
-        estadios = estadioService.buscarTodosEstadio();
-
-        for(Estadio estadio:estadios){
-            estadio.setBytesImagen(buscarImagenEstadio(estadio));
-            System.out.println(estadio.toString2());
-        }
-
-
-
-        return estadios;
-    }
-
-    public JComboBox<Estadio> cargarEstadios2(EstadioService estadioService, JComboBox<Estadio> estadiosComboBox) throws ServiceException{
-        try{
-            ArrayList<Estadio> estadios = estadioService.buscarTodosEstadio();
-            for(Estadio a:estadios){
-                estadiosComboBox.addItem(a);
-            }
-        }catch (ServiceException e){
-            throw new RuntimeException(e);
-        }
-
-        return estadiosComboBox;
-    }
 
     public long getCodEstadio() {
         return codEstadio;
@@ -190,7 +129,7 @@ public class Estadio {
                 ", precioPlatea=" + precioPlatea +
                 ", precioCampo=" + precioCampo +
                 ", precioVip=" + precioVip +
-                ", bytesImagen=" + //Arrays.toString(bytesImagen) +
+                ", bytesImagen=" + Arrays.toString(bytesImagen) +
                 '}';
     }
 

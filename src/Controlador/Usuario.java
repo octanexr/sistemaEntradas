@@ -13,15 +13,10 @@ public abstract class Usuario {
         this.contraseña = contraseña;
     }
 
+
     public Usuario() {
 
     }
-
-    public abstract Espectaculo  verEspectaculo();
-
-    public abstract boolean buscarUsuario(String emailUsuario, String nombreUsuario, String contraseña, JFrame frame);
-
-    public abstract boolean registrarUsuario(String emailUsuario, String nombreUsuario, String contraseña);
 
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;

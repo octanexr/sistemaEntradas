@@ -2,6 +2,8 @@ package gui;
 
 import Controlador.Comprador;
 import Controlador.Estadio;
+import Model.DAOException;
+import service.EstadioService;
 import service.ServiceException;
 
 import javax.swing.*;
@@ -44,6 +46,7 @@ public class RegistrarEstadioPage implements ActionListener {
     JFileChooser fileChooser = new JFileChooser();
     File file;
     byte[] imagenBytes;
+    EstadioService estadioService = new EstadioService();
 
 
     public RegistrarEstadioPage(Comprador comprador, JFrame frame){
@@ -160,6 +163,8 @@ public class RegistrarEstadioPage implements ActionListener {
                 new HomePage(comprador1,frameRE);
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
+            } catch (DAOException ex) {
+                throw new RuntimeException(ex);
             }
 
 
@@ -184,7 +189,6 @@ public class RegistrarEstadioPage implements ActionListener {
             }
 
 
-
         }
 
 
@@ -204,7 +208,7 @@ public class RegistrarEstadioPage implements ActionListener {
             long codEstadio = random.nextLong((long) Math.pow(10, codigoMax));
 
             Estadio estadio = new Estadio(codEstadio, nombreEstadio, capacidadMaxima, cantPlatea, cantCampo, cantVip, precioPlatea, precioCampo, precioVIP,imagenSubidaBytes);
-            estadio.registrarEstadio(cantCampo,cantPlatea,cantVip,capacidadMaxima,estadio);
+            estadioService.registrarEstadio(cantCampo,cantPlatea,cantVip,capacidadMaxima,estadio);
 
 
         }

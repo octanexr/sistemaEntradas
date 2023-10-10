@@ -4,6 +4,7 @@ import Controlador.Comprador;
 import Controlador.Entrada;
 import Controlador.Espectaculo;
 import Controlador.Estadio;
+import Model.DAOException;
 import service.EntradaService;
 import service.EspectaculoService;
 import service.EstadioService;
@@ -35,24 +36,16 @@ public class EntradasDelUsuarioPage implements ActionListener {
     JPanel panelFondoEntradasDelUsuario = new JPanel();
 
 
-    private void cargarEntradas(Comprador comprador2){
-        try {
-            ArrayList<Entrada> entradas = entradaService.buscarTodosUsuarioEntrada(comprador2.getMailUsuario());
-            for(Entrada entrada:entradas){
-                entradasComboBox.addItem(entrada);
-            }
-        } catch (ServiceException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 
-    public EntradasDelUsuarioPage(Comprador comprador, JFrame frame){
+    public EntradasDelUsuarioPage(Comprador comprador, JFrame frame) throws DAOException {
 
         comprador1 = comprador;
 
-        cargarEntradas(comprador1);
+        ArrayList<Entrada> entradas = entradaService.cargarEntradas(comprador1);
+        for(Entrada entrada : entradas)
+            entradasComboBox.addItem(entrada);
+
         frameEU = frame;
 
         panelEntradasDelUsuario.setBounds(0,0,1240, 720);
@@ -126,6 +119,8 @@ public class EntradasDelUsuarioPage implements ActionListener {
                 panelEntradasDelUsuario = null;
                 new HomePage(comprador1,frameEU);
             } catch (ServiceException ex) {
+                throw new RuntimeException(ex);
+            } catch (DAOException ex) {
                 throw new RuntimeException(ex);
             }
 

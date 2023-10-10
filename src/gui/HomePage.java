@@ -2,6 +2,7 @@ package gui;
 
 import Controlador.*;
 import Model.DAOEstadio;
+import Model.DAOException;
 import service.*;
 
 import javax.imageio.ImageIO;
@@ -22,6 +23,7 @@ public class HomePage implements ActionListener {
     private boolean es_vendedor;
     private Comprador comprador1;
     private Vendedor vendedor1;
+    private Administrador administrador1;
     private int precioTotal;
 
     JFrame frameHP;
@@ -99,19 +101,28 @@ public class HomePage implements ActionListener {
     JButton botonVolver3 = new JButton("Volver");
 
 
-    public HomePage(Usuario usuario,JFrame frame) throws ServiceException {
+
+    public HomePage(Usuario usuario,JFrame frame) throws ServiceException, DAOException {
         frameHP = frame;
         es_admin = compradorService.buscarEsAdmin(usuario.getMailUsuario());
         es_vendedor = vendedorService.buscarEsVendedor(usuario.getMailUsuario());
 
 
         if(!es_vendedor){
-            comprador1 = (Comprador) usuario;
+            if(es_admin) {
+                comprador1 = (Comprador) usuario;
+
+                comprador1.setEspectaculos(espectaculoService.cargarEspectaculos2());
+                comprador1.setEstadios(estadioService.cargarEstadios());
+            }
+
+            else
+                comprador1 = (Comprador) usuario;
         }
 
         if(es_vendedor){
             vendedor1 = (Vendedor) usuario;
-            vendedor1.cargarVentas(vendedor1,entradasVendidasComboBox);
+            vendedorService.cargarVentas(vendedor1,entradasVendidasComboBox);
 
 
         }
@@ -428,11 +439,9 @@ public class HomePage implements ActionListener {
 
 
         if(es_admin && !es_vendedor){
-            Espectaculo espectaculo = new Espectaculo();
-            Estadio estadio = new Estadio();
 
-            estadios = estadio.cargarEstadios(estadioService);
-            espectaculos = espectaculo.cargarEspectaculos2(espectaculoService);
+            estadios = estadioService.cargarEstadios();
+            espectaculos = espectaculoService.cargarEspectaculos2();
             frame.add(panelAdmin);
             panelAdmin.setVisible(true);
 
@@ -494,8 +503,8 @@ public class HomePage implements ActionListener {
             Espectaculo espectaculo = new Espectaculo();
             Entrada entrada = new Entrada();
 
-            espectaculos = espectaculo.cargarEspectaculos2(espectaculoService);
-            entradas = entrada.cargarEntradas(entradaService,comprador1);
+            espectaculos = espectaculoService.cargarEspectaculos2();
+            entradas = entradaService.cargarEntradas(comprador1);
             System.out.println(comprador1.toString2());
             frame.add(panelComprador);
             frame.add(panelSeleccionComprador);
@@ -597,7 +606,7 @@ public class HomePage implements ActionListener {
         }
 
         else if(!es_admin && es_vendedor){
-            espectaculos = vendedor1.cargarEspectaculoVendedor(vendedor1,espectaculoService,estadioService);
+            espectaculos = espectaculoService.cargarEspectaculoVendedor(vendedor1);
 
             System.out.println(vendedor1.toString2());
             frame.add(panelVendedor);
@@ -654,7 +663,7 @@ public class HomePage implements ActionListener {
             try {
                 Estadio estadio = new Estadio();
 
-                estadio.cargarEstadios2(estadioService,estadiosComboBox);
+                estadioService.cargarEstadios2(estadiosComboBox);
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
             }
@@ -667,7 +676,7 @@ public class HomePage implements ActionListener {
             Image imagen;
             DAOEstadio daoEstadio = new DAOEstadio();
             try {
-                inputStream = new ByteArrayInputStream(b.buscarImagenEstadio(b)) ;
+                inputStream = new ByteArrayInputStream(estadioService.buscarImagenEstadio(b.getCodEstadio())) ;
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
             }
@@ -714,7 +723,11 @@ public class HomePage implements ActionListener {
         if(e.getSource()==botonRegistrarEspectaculo){
             panelAdmin.setVisible(false);
             panelAdmin = null;
-            RegistrarEspectaculoPage registrarEspectaculoPage = new RegistrarEspectaculoPage(comprador1,frameHP);
+            try {
+                RegistrarEspectaculoPage registrarEspectaculoPage = new RegistrarEspectaculoPage(comprador1,frameHP);
+            } catch (DAOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
         if(e.getSource()==botonGenerarInforme){
@@ -748,7 +761,7 @@ public class HomePage implements ActionListener {
             Espectaculo espectaculo = new Espectaculo();
 
             panelComprador.setVisible(false);
-            espectaculo.cargarEspectaculos(espectaculoService,espectaculoComboBox);
+            espectaculoService.cargarEspectaculos(espectaculoComboBox);
             panelSeleccionComprador.setVisible(true);
 
         }
@@ -756,7 +769,11 @@ public class HomePage implements ActionListener {
 
         if(e.getSource()==botonVerEntradas){
             panelComprador.setVisible(false);
-            new EntradasDelUsuarioPage(comprador1,frameHP);
+            try {
+                new EntradasDelUsuarioPage(comprador1,frameHP);
+            } catch (DAOException ex) {
+                throw new RuntimeException(ex);
+            }
 
         }
 
@@ -797,7 +814,7 @@ public class HomePage implements ActionListener {
             ByteArrayInputStream inputStream;
             Image imagen;
             try {
-                inputStream = new ByteArrayInputStream(estadio.buscarImagenEstadio(estadio)) ;
+                inputStream = new ByteArrayInputStream(estadioService.buscarImagenEstadio(estadio.getCodEstadio()));
             } catch (ServiceException ex) {
                 throw new RuntimeException(ex);
             }
@@ -863,8 +880,8 @@ public class HomePage implements ActionListener {
             long codEntrada = random.nextLong((long) Math.pow(10, codMax));
 
             try {
-                espectaculo.restarEntradas(espectaculo);
-            } catch (ServiceException ex) {
+                espectaculoService.restarEntradas(espectaculo);
+            } catch (DAOException ex) {
                 throw new RuntimeException(ex);
             }
 
@@ -873,7 +890,7 @@ public class HomePage implements ActionListener {
                 Entrada entrada = new Entrada(codEntrada, codEspectaculo, codEstadio, fechaEntrada, precioEntrada, mailUsuario, ubicacion);
 
                 try {
-                    entrada.guardarEntrada(entrada);
+                   entradaService.guardarEntrada(entrada);
                 } catch (ServiceException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -882,9 +899,9 @@ public class HomePage implements ActionListener {
             }
             else {
                 try {
-                    espectaculo.sumarEntradas(espectaculo);
+                    espectaculoService.sumarEntradas(espectaculo);
                     JOptionPane.showMessageDialog(null,"Entradas agotadas.","ADVERTENCIA",JOptionPane.ERROR_MESSAGE);
-                } catch (ServiceException ex) {
+                } catch (DAOException ex) {
                     throw new RuntimeException(ex);
                 }
 

@@ -2,8 +2,7 @@ package Controlador;
 
 import Model.DAOEspectaculo;
 import Model.DAOException;
-import service.EntradaService;
-import service.ServiceException;
+
 
 import java.util.ArrayList;
 
@@ -16,6 +15,8 @@ public class Entrada {
     private int precioEntrada;
     private String mailUsuario;
     private String ubicacion;
+
+
 
     public Entrada(long codEntrada, long codEspectaculo, long codEstadio, String fechaEntrada, int precioEntrada, String mailUsuario, String ubicacion) {
         this.codEntrada = codEntrada;
@@ -37,26 +38,6 @@ public class Entrada {
 
         return espectaculo.getNombreEspectaculo();
 
-    }
-
-    public void guardarEntrada(Entrada entrada) throws ServiceException {
-        EntradaService entradaService = new EntradaService();
-        entradaService.guardarEntrada(entrada);
-    }
-
-    public void eliminarEntrada(Entrada entrada) throws ServiceException{
-        EntradaService entradaService = new EntradaService();
-        entradaService.eliminarEntrada(entrada.getCodEntrada());
-
-    }
-
-    public ArrayList<Entrada> cargarEntradas(EntradaService entradaService, Comprador comprador1) throws ServiceException {
-        ArrayList<Entrada> entradas = new ArrayList<>();
-
-        entradas = entradaService.buscarTodosUsuarioEntrada(comprador1.getMailUsuario());
-        comprador1.setEntradas(entradas);
-
-        return entradas;
     }
 
 
